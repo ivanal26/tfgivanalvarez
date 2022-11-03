@@ -1,10 +1,10 @@
 
 function contenidoCargado() {
-    var tokenJWT = 0; //inicialmente no hay token
-    var cookies = document.cookie;
+    var tokenJWT = 0; //Inicialmente no hay token
+    var cookies = document.cookie; //Se recuperan las cookies y se separan
     var token = cookies.split(';')
-    console.log(token);
-    //Se han separado las cookies. Si encuentra el jwt lo almacena en la variable tokenJWT si no, pues seguira con el valor 0 (false)
+    
+    //Si en las cookies separadas se encuentra el jwt lo almacena en la variable tokenJWT si no, pues seguira con el valor 0 (false)
     for (let i = 0; i<token.length;i++){
         if (token[i].includes('jwt')){
            var partesJWT = token[i].split('=');
@@ -12,7 +12,6 @@ function contenidoCargado() {
         }
     }
 
-    console.log("Token antes de entrar a la comprobacion: "+tokenJWT)
     if (tokenJWT) {
         //Se elimina de la barra de navegacion el 'Login'
         $("#navItemLogin").css("display", "none");
