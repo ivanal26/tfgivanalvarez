@@ -2,7 +2,7 @@
 function contenidoCargado() {
     var tokenJWT = 0; //inicialmente no hay token
     var cookies = document.cookie;
-    var token = cookies.split(';')
+    var token = cookies.split('=')
     console.log(token);
     //Se han separado las cookies. Si encuentra el jwt lo almacena en la variable tokenJWT si no, pues seguira con el valor 0 (false)
     for (let i = 0; i<token.length;i++){
