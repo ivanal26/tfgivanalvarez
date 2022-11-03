@@ -2,14 +2,16 @@
 function contenidoCargado() {
     var cookies = document.cookie;
     var token = cookies.split('=')
+    console.log(token);
     var tokenJWT = 0;
     //Se han separado las cookies. Si encuentra el jwt lo almacena en la variable tokenJWT si no, pues seguira con el valor 0 (false)
     for (let i = 0; i<token.length;i++){
         if (token[i]==='jwt') { 
             tokenJWT = token[i+1];
+            console.log("TOKEN ESTABLECIDO: "+ tokenJWT)
         }
     }
-    
+    console.log("Token antes de entrar a la comprobacion: "+tokenJWT)
     if (tokenJWT) {
         //Se elimina de la barra de navegacion el 'Login'
         $("#navItemLogin").css("display", "none");
