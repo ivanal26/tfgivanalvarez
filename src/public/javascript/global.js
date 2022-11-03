@@ -3,7 +3,13 @@
 //Url y puerto global usado por PostMovie (fetchs)
 const URL_LOCALHOST = "http://localhost:3000/";
 const URL_RAILWAY = "https://tfgivanalvarez-production.up.railway.app/";
-const URLBASE_POSTMOVIE = URL_RAILWAY; //SE DEBE CAMBIAR INDICANDO LA URL BASE USADA EN ESE MOMENTO
+var URLBASE_POSTMOVIE;
+
+if (window.location.host === 'localhost:3000') {
+    URLBASE_POSTMOVIE = URL_LOCALHOST;
+} else {
+    URLBASE_POSTMOVIE = URL_RAILWAY;
+}
 
 //Constantes TMDB
 const API_KEY_TMDB = 'api_key=757fb8851252737383ad88b904de8a95';
