@@ -1,8 +1,8 @@
 
 function contenidoCargado() {
     var cookies = document.cookie;
-
-    if (cookies) {
+    console.log(cookies);
+    if (cookies.jwt) {
         //Se elimina de la barra de navegacion el 'Login'
         $("#navItemLogin").css("display", "none");
         //Se eimina de la barra de navegacion el 'Registro'
