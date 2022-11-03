@@ -1,7 +1,9 @@
 //Variables globales para los ficheros public/javascript
 
 //Url y puerto global usado por PostMovie (fetchs)
-const URLBASE_POSTMOVIE = "http://localhost:3000/"
+const URL_LOCALHOST = "http://localhost:3000/";
+const URL_RAILWAY = "https://tfgivanalvarez-production.up.railway.app/";
+const URLBASE_POSTMOVIE = URL_RAILWAY;
 
 //Constantes TMDB
 const API_KEY_TMDB = 'api_key=757fb8851252737383ad88b904de8a95';
