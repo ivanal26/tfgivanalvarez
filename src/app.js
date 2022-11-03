@@ -22,7 +22,8 @@ dotenv.config({path: './.env'}) //le indicamos donde esta el fichero .env
 const bcryptjs = require('bcryptjs');
 
 //Variables de session 
-const session = require('express-session');
+//const session = require('express-session');
+const session = require('cookie-session');
 app.use(session({
   secret: 'secret',
   resave: true,
