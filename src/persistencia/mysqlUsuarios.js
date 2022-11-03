@@ -4,7 +4,7 @@ const mysqlUsuarios = {};
 mysqlUsuarios.save = async (usuario) => {
     const connection = await db.getConnection();
 
-    const result = await connection.execute('INSERT INTO `Usuarios` SET `email` = ?, `nombre` = ?, `apellidos` = ?, '
+    const result = await connection.execute('INSERT INTO `usuarios` SET `email` = ?, `nombre` = ?, `apellidos` = ?, '
     + '`nombreUsuario` = ?, `pass` = ?', 
     [usuario['email'], usuario['nombre'],
     usuario['apellidos'], usuario['username'], usuario['pass']]);
@@ -14,25 +14,25 @@ mysqlUsuarios.save = async (usuario) => {
 
 mysqlUsuarios.getById = async(id) => {
     const connection = await db.getConnection();
-    const [rows, fields] = await connection.execute('SELECT * FROM `Usuarios` WHERE `id` = ?', [id]);
+    const [rows, fields] = await connection.execute('SELECT * FROM `usuarios` WHERE `id` = ?', [id]);
     return rows[0];
 }
 
 mysqlUsuarios.getByUserName = async(username) => {
     const connection = await db.getConnection();
-    const [rows, fields] = await connection.execute('SELECT * FROM `Usuarios` WHERE `nombreUsuario` = ?', [username]);
+    const [rows, fields] = await connection.execute('SELECT * FROM `usuarios` WHERE `nombreUsuario` = ?', [username]);
     return rows[0];
 }
 
 mysqlUsuarios.getByEmail = async(email) => {
     const connection = await db.getConnection();
-    const [rows, fields] = await connection.execute('SELECT * FROM `Usuarios` WHERE `email` = ?', [email]);
+    const [rows, fields] = await connection.execute('SELECT * FROM `usuarios` WHERE `email` = ?', [email]);
     return rows[0];
 }
 
 mysqlUsuarios.getAll = async () => {
     const connection = await db.getConnection();
-    const [rows, fields] = await connection.execute('SELECT * FROM `Usuarios`');
+    const [rows, fields] = await connection.execute('SELECT * FROM `usuarios`');
 
     return rows;
 }
@@ -40,7 +40,7 @@ mysqlUsuarios.getAll = async () => {
 mysqlUsuarios.update = async(usuario) => {
     const connection = await db.getConnection();
     
-    const [rows, fields] = await connection.execute('UPDATE `Usuarios` SET `email` = ? , `nombre` = ?,' 
+    const [rows, fields] = await connection.execute('UPDATE `usuarios` SET `email` = ? , `nombre` = ?,' 
                         + '`apellidos` = ?, `nombreUsuario` = ?, `pass` = ?'
                         + ' WHERE `id` = ?', [usuario['email'], usuario['nombre'], usuario['apellidos'], 
                         usuario['usenarme'], usuario['pass'],usuario['id']]);
@@ -49,7 +49,7 @@ mysqlUsuarios.update = async(usuario) => {
 mysqlUsuarios.updateAvatar = async(avatar,id) => {
     const connection = await db.getConnection();
     
-    const result = await connection.execute('UPDATE `Usuarios` SET `fotoAvatar` = ?'
+    const result = await connection.execute('UPDATE `usuarios` SET `fotoAvatar` = ?'
                         + ' WHERE `id` = ?', [avatar,id]);
 }
 
