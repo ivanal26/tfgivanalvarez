@@ -1,0 +1,64 @@
+<body class="b-register">
+<main>
+    <div class="container w-75 my-5 rounded shadow container-register">
+        <div class="row align-items-stretch">
+            <div class="col col-bg-img d-none d-md-block col-md-5 col-lg-5 col-xl-6 rounded-start">
+                
+            </div>
+            <div class="col bg-white rounded-end col-der-register">
+                <h2 class="fw-bold text-center py-5">Crear cuenta</h2>
+                <form action="/usuarios/registrar" method="POST">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control inputBordeMorado" placeholder="Nombre" name="nombre">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control inputBordeMorado" placeholder="Apellidos" name="apellidos">
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <input type="text" class="form-control inputBordeMorado"  placeholder="Nombre de usuario" name="username">
+                    </div>
+                    <div class="my-3">
+                        <input type="email" class="form-control inputBordeMorado"  placeholder="Correo electrónico" name="email">
+                    </div>
+                    <div class="my-3">
+                        <input type="password" class="form-control inputBordeMorado" placeholder="Contraseña" name="password">
+                    </div>
+                    <div class="my-3">
+                        <input type="password" class="form-control inputBordeMorado" placeholder="Repetir contraseña" name="password">
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col d-grid">
+                            <button type="submit" class="btn btn-primary" id="btn-registrar">Registrarse</button>
+                        </div>
+                        <div class="col">
+                            <a href="/" class="d-grid" id="eCancel"><button type="button" class="btn btn-secondary" id="btn-cancel-registro">Cancelar</button></a>
+                        </div>
+                    </div>
+                    <div class="text-center my-2">
+                        <span>¿Ya tienes cuenta? <a href="/usuarios/login" id="entrarAhora">Entrar ahora</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- SweetAlert CDN -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  {{#if alert}}
+  <script>
+    Swal.fire({
+      title: '{{alertTitle}}',
+      text: '{{alertMessage}}',
+      icon: '{{alertIcon}}',
+      showConfirmButton: {{showConfirmButton}},
+      timer: {{timer}}
+    }).then(() => {
+      window.location = '{{ruta}}'
+    })
+  </script>
+  {{/if}}
+  <script src="../javascript/noFooter.js"></script>
+</body>

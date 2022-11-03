@@ -1,0 +1,43 @@
+<body id="b-login">
+  <main>
+    <div class="container w-75 my-5 rounded shadow">
+      <div class="row align-items-stretch row-login">
+        <div class="col bg-white rounded col-form-login">
+          <h2 class="fw-bold text-center my-5 tituloPostMovie">Post<span id="palabraMovie">Movie</span></h2>
+          <h6 id="preguntaTienesCuenta">¿Tienes cuenta de PostMovie?</h6>
+          <form action="/usuarios/login" method="POST">
+            <div class="my-3">
+              <input type="text" class="form-control inputBordeMorado" placeholder="Nombre de usuario" name="userLogin">
+            </div>
+            <div class="my-3">
+              <input type="password" class="form-control inputBordeMorado" placeholder="Contraseña" name="passLogin">
+            </div>
+            <div class="col d-grid my-4">
+              <button type="submit" class="btn btn-primary" id="btn-login">Iniciar sesión</button>
+            </div>
+            <div class="col text-center col-registrate">
+              <span>¿Aún no tienes cuenta? <a href="/usuarios/registrar">Regístrate</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SweetAlert CDN -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  {{#if alert}}
+  <script>
+    Swal.fire({
+      title: '{{alertTitle}}',
+      text: '{{alertMessage}}',
+      icon: '{{alertIcon}}',
+      showConfirmButton: {{showConfirmButton}},
+      timer: {{timer}}
+    }).then(() => { 
+      window.location = '{{ruta}}'
+    })
+  </script>
+  {{/if}}
+  <script src="../javascript/noFooter.js"></script>
+</body>

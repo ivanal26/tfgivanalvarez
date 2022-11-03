@@ -1,0 +1,178 @@
+<body id="bodyMostrarItemConcreto">
+    <div class="container-fluid containerItemConcreto">
+        <div class="row rowPrincipal">
+            <div class="col-md-6 colIzqMostrarItem">
+                <div class="cardMostrarItem ">
+
+                </div>
+            </div>
+            <div class="col-md-6 colDerMostrarItem text-light">
+                <div class="row">
+                    <div class="col">
+                        <h2 id="tituloItem"></h2>
+                        <h5 id="tipoItem"></h5>
+                        <div id="generos">
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="divIconoAñadirListaSeg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-bookmark-heart" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
+                                <path
+                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row rowValoracionesItem">
+                    <div class="col">
+                        <p id="textoPuntFinal">Puntuación media</p>
+                        <span class="fa fa-star estrellaPuntuacionMedia" style="cursor: pointer;"
+                            id="estrellaPuntuacionMedia"><span class="puntuacionMedia"></span></span>
+                    </div>
+                    <div class="col">
+                        <p id="textoPuntPropia">Tú puntuación</p>
+                        <span class="fa fa-star estrellaTuPuntuacion" style="cursor: pointer;"
+                            id="estrellaTuPuntuacion"><span class="tuPuntuacion"></span>
+                        </span>
+                        <div id="editarPuntuacion">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="pincelEditarPuntuacion" width="16" height="16"
+                                fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p id="tagline"></p>
+                <h5 id="tituloResumen">Resumen</h5>
+                <p id="textoResumen"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Imagenes del item seleccionado -->
+    <div class="containerImgs">
+        <div class="columnaImgItemIzq">
+
+        </div>
+        <div class="columnaImgItemDer">
+
+        </div>
+    </div>
+    <!-- Swiper -->
+    <div id="containerTituloSimilares">
+        <h3 id="tituloSimilares">Similares</h3>
+    </div>
+    <div class="flex-container-Swipper swipperElement" id="swipperElement">
+        <div class="containerSwipper">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-container mySwiper">
+                <div class="swiper-wrapper">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal valorar pelicula-->
+    <div class="modal fade" id="modalValorarPelicula" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Valora esta pelicula</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body-valPeliculas">
+
+                    <div class="row-12 containerValEstrPelicula" style="text-align: center;">
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="1estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="2estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="3estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="4estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="5estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="6estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="7estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="8estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="9estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaPelicula(this)" style="cursor: pointer;"
+                            id="10estrella"></span>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <h4 id="puntuacionMarcadaPelicula"></h4>
+                    </div>
+                </div>
+                <div class="col divButtonConfirmar">
+                    <button type="button" class="btn btn-primary btn-confirmarValoracion"
+                        id="btn-confirmarValoracionPelicula">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal valorar serie-->
+    <div class="modal fade" id="modalValorarSerie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Valora esta serie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body-valSeries">
+
+                    <div class="row-12 containerValEstrSerie" style="text-align: center;">
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="1Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="2Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="3Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="4Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="5Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="6Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="7Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="8Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="9Estrella"></span>
+                        <span class="fa fa-star" onclick="marcarEstrellaSerie(this)" style="cursor: pointer;"
+                            id="10Estrella"></span>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <h4 id="puntuacionMarcadaSerie"></h4>
+                    </div>
+                </div>
+                <div class="col divButtonConfirmar">
+                    <button type="button" class="btn btn-primary btn-confirmarValoracion" id="btn-confirmarValoracionSerie">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="../javascript/responsiveSwiper.js"></script>
+
+    <script src="../javascript/global.js"></script>
+    <script src="../javascript/mostrarItemConcreto.js"></script>
+</body>

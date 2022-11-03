@@ -1,0 +1,36 @@
+<body id="bodyMostrarSeries">
+    <div class="row rowSeries">
+        <div class="col  col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-2 colFiltrosIzq">
+            <div id="containerBtnFiltrar">
+                <a class="btn btn-outline-light btnFiltrarCollapse" data-bs-toggle="collapse" href="#collapseDiv"
+                    role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Filtrar
+                    <svg xmlns="http://www.w3.org/2000/svg" id="flechaFiltrar" width="16" height="16"
+                        fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                    </svg>
+                </a>
+            </div>
+            <div id="collapseDiv" class="collapse">
+                <div id="divGeneros">
+
+                </div>
+                <div class="d-grid m-5">
+                    <button type="submit" class="btn btn-primary" disabled id="btnFiltrar">Buscar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-9 col-lg-9 col-xl-9 col-xxl-10 colFiltrosDer">
+            <div id="flex-container" class="flexContainerMostrarTodosItems">
+
+            </div>
+            <div class="d-grid m-5">
+                <button type="submit" class="btn btn-primary" id="btn-mostrarMas">Mostrar más</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../javascript/global.js"></script>
+    <script src="../javascript/series.js"></script>
+</body>
