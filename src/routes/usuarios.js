@@ -7,20 +7,15 @@ const { promisify } = require('util');
 const { token } = require('morgan');
 
 //Router para mostrar las vistas
-router.get('/login', function (req, res, next) {
+router.get('/vistas/login', function (req, res, next) {
     res.render('login/login', { alert: false });
 })
 
-router.get('/registrar', function (req, res, next) {
+router.get('/vistas/registrar', function (req, res, next) {
     res.render('register/registro')
 })
 
-router.get('/logout', function (req, res, next) {
-    res.clearCookie('jwt');
-    return res.redirect('/')
-})
-
-router.get('/perfil', function (req, res, next) {
+router.get('/vistas/perfil', function (req, res, next) {
     if (!req.cookies.jwt) {
         res.render('login/login');
     } else {
@@ -28,12 +23,17 @@ router.get('/perfil', function (req, res, next) {
     }
 })
 
-router.get('/preguntas', function (req, res, next) {
+router.get('/vistas/preguntas', function (req, res, next) {
     res.render('preguntas');
 })
 
 //Router para hacer acciones
-router.post('/registrar', async function (req, res, next) {
+router.get('/logout', function (req, res, next) {
+    res.clearCookie('jwt');
+    return res.redirect('/')
+})
+
+router.post('/', async function (req, res, next) {
     //Se obtienen los valores del formulario
     const pass = req.body.password[0]; //Vienen los dos inputs del password, se coge el primero
     let passHash = await bcrypt.hash(pass.toString(), 8);
@@ -54,7 +54,7 @@ router.post('/registrar', async function (req, res, next) {
             alertIcon: 'error',
             showConfirmButton: true,
             timer: false,
-            ruta: '/usuarios/registrar'
+            ruta: '/usuarios/vistas/registrar'
         })
         //Las contraseñas deben coincidir
     } else if (req.body.password[0] != req.body.password[1]) {
@@ -65,7 +65,7 @@ router.post('/registrar', async function (req, res, next) {
             alertIcon: 'error',
             showConfirmButton: true,
             timer: false,
-            ruta: '/usuarios/registrar'
+            ruta: '/usuarios/vistas/registrar'
         })
     } else {
         //El usuario no puede existir en la BD
@@ -79,7 +79,7 @@ router.post('/registrar', async function (req, res, next) {
                     alertIcon: 'error',
                     showConfirmButton: true,
                     timer: false,
-                    ruta: '/usuarios/registrar'
+                    ruta: '/usuarios/vistas/registrar'
                 })
             }
         } catch (error) { //No se ha podido recuperar, por tanto, no existe en la BD
@@ -90,7 +90,7 @@ router.post('/registrar', async function (req, res, next) {
                 alertIcon: 'success',
                 showConfirmButton: true,
                 timer: false,
-                ruta: '/usuarios/login'
+                ruta: '/usuarios/vistas/login'
             })
             servicioUsuarios.registrarUsuario(usuario);
         }
@@ -101,7 +101,6 @@ router.post('/registrar', async function (req, res, next) {
 router.post('/login', async function (req, res, next) {
     const username = req.body.userLogin;
     const pass = req.body.passLogin;
-
     if (!username || !pass) {
         res.render('login/login', {
             alert: true,
@@ -110,11 +109,9 @@ router.post('/login', async function (req, res, next) {
             alertIcon: 'info',
             showConfirmButton: true,
             timer: false,
-            ruta: '/usuarios/login'
+            ruta: '/usuarios/vistas/login'
         })
-
     } else {
-
         try {
             let usuario = await servicioUsuarios.obtenerUserByUserName(username);
             let result = await bcrypt.compare(pass, usuario.pass);
@@ -126,7 +123,7 @@ router.post('/login', async function (req, res, next) {
                     alertIcon: 'error',
                     showConfirmButton: true,
                     timer: false,
-                    ruta: '/usuarios/login'
+                    ruta: '/usuarios/vistas/login'
                 })
             } else { //Inicio de sesion correcto
 
@@ -145,7 +142,6 @@ router.post('/login', async function (req, res, next) {
                     //expires: new Date(Date.now() + process.env.COOKIE_EXPIRACION * 24 * 60 * 60 * 1000),  
                     httpOnly: false
                 }
-
                 res.cookie('jwt', token, opcionesCookie) //Se define el nombre para la cookie. Dicha cookie va a ser el propio token JWT
                 res.render('login/login', {
                     alert: true,
@@ -167,13 +163,13 @@ router.post('/login', async function (req, res, next) {
                 alertIcon: 'error',
                 showConfirmButton: true,
                 timer: false,
-                ruta: '/usuarios/login'
+                ruta: '/usuarios/vistas/login'
             })
         }
     }
 })
 
-router.get('/obtenerUsuario', function (req, res, next) {
+router.get('/', function (req, res, next) {
     var idUsuarioLogeado = req.query.idUser;
     servicioUsuarios.obtenerUserById(idUsuarioLogeado).then(function (usuario) {
         res.setHeader('Content-Type', 'application/json');
@@ -183,7 +179,7 @@ router.get('/obtenerUsuario', function (req, res, next) {
     });
 })
 
-router.put('/actualizarAvatar', async function (req, res, next) {
+router.put('/avatar', async function (req, res, next) {
     var nuevoAvatar = req.body.avatar;
     var idUsuario = req.body.idUsuario;
 

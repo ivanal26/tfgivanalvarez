@@ -80,25 +80,25 @@ function cargarCarouselPrincipal() {
     const idPelicula1 = peliculasObtenidas[0].id;
     const btnVerAhoraPeli1 = document.querySelector('#botonPelicula1');
     btnVerAhoraPeli1.addEventListener('click', () => {
-        window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idPelicula1 + "&type=movie";
+        window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idPelicula1 + "&type=movie";
     });
 
     const idPelicula2 = peliculasObtenidas[1].id;
     const btnVerAhoraPeli2 = document.querySelector('#botonPelicula2');
     btnVerAhoraPeli2.addEventListener('click', () => {
-        window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idPelicula2 + "&type=movie";
+        window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idPelicula2 + "&type=movie";
     });
 
     const idSerie1 = seriesObtenidas[0].id;
     const btnVerAhoraSerie1 = document.querySelector('#botonSerie1');
     btnVerAhoraSerie1.addEventListener('click', () => {
-        window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idSerie1 + "&type=tv";
+        window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idSerie1 + "&type=tv";
     });
 
     const idSerie2 = seriesObtenidas[1].id;
     const btnVerAhoraSerie2 = document.querySelector('#botonSerie2');
     btnVerAhoraSerie2.addEventListener('click', () => {
-        window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idSerie2 + "&type=tv";
+        window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idSerie2 + "&type=tv";
     });
 
     //Se eliminan los dos primeros elementos de cada array ya que son usados en el carousel
@@ -151,12 +151,12 @@ function mostrarSeriesDelMomento() {
 
 function peliPulsada(e) {
     let idPelicula = e.currentTarget.firstElementChild.alt;
-    window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idPelicula + "&type=movie";
+    window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idPelicula + "&type=movie";
 }
 
 function seriePulsada(e) {
     let idSerie = e.currentTarget.firstElementChild.alt;
-    window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idSerie + "&type=tv";
+    window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idSerie + "&type=tv";
 }
 
 window.onload = function () {

@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" id="navItemLogin">
-          <a class="nav-link active" aria-current="page" href="/usuarios/login" id="btn-login-header">Login</a>
+          <a class="nav-link active" aria-current="page" href="/usuarios/vistas/login" id="btn-login-header">Login</a>
         </li>
         <li class="nav-item" id="navItemRegistrar">
-          <a class="nav-link active" aria-current="page" href="/usuarios/registrar"
+          <a class="nav-link active" aria-current="page" href="/usuarios/vistas/registrar"
             id="btn-registro-header">Registro</a>
         </li>
 
@@ -22,7 +22,7 @@
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
         <li class="nav-item" id="navItemBuscar">
-          <form class="d-flex" action="/items/buscar">
+          <form class="d-flex" action="/items/vistas/itemsBuscados">
             <input class="form-control me-2 inputSearch inputBordeMorado" type="" placeholder="Buscar pelicula o serie"
               aria-label="Search" id="item" name="item">
             <button class="btn btn-outline-light" type="submit">Buscar</button>
@@ -31,13 +31,13 @@
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" id="navItemPeliculas">
-          <a class="nav-link active" aria-current="page" href="/peliculas/mostrar" id="btn-soloPeliculas">Peliculas</a>
+          <a class="nav-link active" aria-current="page" href="/peliculas/vistas/peliculas" id="btn-soloPeliculas">Peliculas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/series/mostrar" id="btn-soloSeries">Series</a>
+          <a class="nav-link active" aria-current="page" href="/series/vistas/series" id="btn-soloSeries">Series</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/usuarios/perfil" id="btn-login-header">Perfil</a>
+          <a class="nav-link active" aria-current="page" href="/usuarios/vistas/perfil" id="btn-login-header">Perfil</a>
         </li>
       </ul>
       
@@ -45,4 +45,4 @@
     </div>
   </div>
 </nav>
-<script src="../javascript/header.js"></script>
+<script src="../../javascript/header.js"></script>

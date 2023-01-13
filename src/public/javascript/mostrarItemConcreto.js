@@ -32,7 +32,7 @@ function obtenerDatosItem() {
 }
 
 function isEnListaDeSeguimiento() {
-    fetch(URLBASE_POSTMOVIE+"items/obtenerItemDeListaSeg?idItem=" + idItem + "&idUsuario=" + idUsuarioLoggeado, {
+    fetch(URLBASE_POSTMOVIE+"items/listaSeguimiento?idItem=" + idItem + "&idUsuario=" + idUsuarioLoggeado, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -112,7 +112,7 @@ function rellenarContainerPrincipal() {
 }
 
 function obtenerMediaPelicula() {
-    fetch(URLBASE_POSTMOVIE+"peliculas/obtenerMediaPelicula?idPelicula=" + idItem, {
+    fetch(URLBASE_POSTMOVIE+"peliculas/valoraciones/medias?idPelicula=" + idItem, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -147,7 +147,7 @@ function obtenerMediaPelicula() {
 }
 
 function obtenerMediaSerie() {
-    fetch(URLBASE_POSTMOVIE+"series/obtenerMediaSerie?idSerie=" + idItem, {
+    fetch(URLBASE_POSTMOVIE+"series/valoraciones/medias?idSerie=" + idItem, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -184,7 +184,7 @@ function obtenerMediaSerie() {
 
 function rellenarValoracionesPelicula() {
     //Se hace diferenciacion dependiendo de si ha votado o no
-    fetch(URLBASE_POSTMOVIE+"peliculas/obtenerValoracionPelicula?idPelicula=" + idItem + "&idUsuario=" + idUsuarioLoggeado, {
+    fetch(URLBASE_POSTMOVIE+"peliculas/valoraciones?idPelicula=" + idItem + "&idUsuario=" + idUsuarioLoggeado, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -226,7 +226,7 @@ function rellenarValoracionesPelicula() {
 
 function rellenarValoracionesSerie() {
     //Se hace diferenciacion dependiendo de si ha votado o no
-    fetch(URLBASE_POSTMOVIE+"series/obtenerValoracionSerie?idSerie=" + idItem + "&idUsuario=" + idUsuarioLoggeado, {
+    fetch(URLBASE_POSTMOVIE+"series/valoraciones?idSerie=" + idItem + "&idUsuario=" + idUsuarioLoggeado, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -302,7 +302,7 @@ function guardarValoracionPeliculaBD() {
             "title": datosItem.title,
             "poster": datosItem.poster_path
         };
-        fetch(URLBASE_POSTMOVIE+"peliculas/agregarValoracionPelicula", {
+        fetch(URLBASE_POSTMOVIE+"peliculas/valoraciones", {
             method: 'POST',
             redirect: 'follow',
             body: JSON.stringify(datos),
@@ -333,7 +333,7 @@ function guardarValoracionPeliculaBD() {
         });
 
     } else { //Se trata de una actualizacion de la valoracion anterior
-        fetch(URLBASE_POSTMOVIE+"peliculas/actualizarValoracionPelicula", {
+        fetch(URLBASE_POSTMOVIE+"peliculas/valoraciones", {
             method: 'PUT',
             redirect: 'follow',
             body: JSON.stringify({
@@ -407,7 +407,7 @@ function guardarValoracionSerieBD() {
             "titulo": datosItem.name,
             "poster": datosItem.poster_path
         };
-        fetch(URLBASE_POSTMOVIE+"series/agregarValoracionSerie", {
+        fetch(URLBASE_POSTMOVIE+"series/valoraciones", {
             method: 'POST',
             redirect: 'follow',
             body: JSON.stringify(datos),
@@ -437,7 +437,7 @@ function guardarValoracionSerieBD() {
         });
 
     } else { //Se trata de una actualizacion de la valoracion anterior
-        fetch(URLBASE_POSTMOVIE+"series/actualizarValoracionSerie", {
+        fetch(URLBASE_POSTMOVIE+"series/valoraciones", {
             method: 'PUT',
             redirect: 'follow',
             body: JSON.stringify({
@@ -520,7 +520,7 @@ function cargarSubcarouselItemsSimilares(itemsObtenidos) {
 
 function itemPulsado(e) {
     let idPelicula = e.currentTarget.firstElementChild.alt;
-    window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idPelicula + "&type=" + typeItem;
+    window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idPelicula + "&type=" + typeItem;
 }
 
 function obtenerImagenes() {
@@ -609,7 +609,7 @@ function agregarALaListaDeSeguimiento() {
         "poster": datosItem.poster_path
     };
 
-    fetch(URLBASE_POSTMOVIE+"items/agregarAListaSeguimiento", {
+    fetch(URLBASE_POSTMOVIE+"items/listaSeguimiento", {
         method: 'POST',
         redirect: 'follow',
         body: JSON.stringify(datos),

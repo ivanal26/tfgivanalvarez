@@ -23,7 +23,7 @@ function mostrarTarjetas(itemsAMostrar) {
             <div class="row rowNoItemEncontrado rounded">
                 <div class="col colImgNoItemEncontrado  col-12 col-sm-12 col-md-4 col-lg-4 col-xl-5 col-xxl-6">
                     <div>
-                        <img src="../images/oops.png" alt="" id="imagenOops">
+                        <img src="../../images/oops.png" alt="" id="imagenOops">
                     </div>
                 </div>
                 <div class="col colTextoNoItemEncontrado">
@@ -65,7 +65,7 @@ function mostrarTarjetas(itemsAMostrar) {
 function asignarEventoClick(e) {
     tipoItem = e.currentTarget.firstElementChild.alt;
     idItem = e.currentTarget.firstElementChild.id;
-    window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idItem + "&type=" + tipoItem;
+    window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idItem + "&type=" + tipoItem;
 }
 
 window.onload = function() {

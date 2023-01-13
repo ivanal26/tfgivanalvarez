@@ -87,7 +87,7 @@ function mostrarTarjetas(peliculasAMostrar) {
 
 function peliPulsada(e) {
    let idPelicula = e.currentTarget.firstElementChild.alt;
-   window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idPelicula + "&type=movie";
+   window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idPelicula + "&type=movie";
 }
 
 //Funcion que muestra los filtros incluidos en el array 'generosPeliculas' marcados en el desplegable de 'Filtrar'

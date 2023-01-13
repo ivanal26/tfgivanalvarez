@@ -3,7 +3,7 @@ const axios = require('axios');
 const router = express.Router();
 const servicioPeliculas = require('../servicios/servicioPeliculas');
 
-router.get('/mostrar', async function (req, res, next) {
+router.get('/vistas/peliculas', async function (req, res, next) {
     if (!req.cookies.jwt) { //Si el usuario no dispone de token jwt (por lo que no esta logeado) no se le permite el acceso
         res.render('login/login');
     } else {
@@ -11,7 +11,7 @@ router.get('/mostrar', async function (req, res, next) {
     }
 })
 
-router.post('/agregarValoracionPelicula', async function (req, res, next) {
+router.post('/valoraciones', async function (req, res, next) {
     var datos = {
         "idUsuario": req.body.idUsuario,
         "idPelicula": req.body.idPelicula,
@@ -26,7 +26,7 @@ router.post('/agregarValoracionPelicula', async function (req, res, next) {
     });
 })
 
-router.put('/actualizarValoracionPelicula', function (req, res, next) {
+router.put('/valoraciones', function (req, res, next) {
     var idUsuario = req.body.idUsuario;
     var idPelicula = req.body.idPelicula;
     var nuevaValoracion = req.body.valoracionEmitida;
@@ -38,7 +38,7 @@ router.put('/actualizarValoracionPelicula', function (req, res, next) {
     })
 })
 
-router.get('/obtenerValoracionPelicula', function (req, res, next) {
+router.get('/valoraciones', function (req, res, next) {
     var idUsuario = req.query.idUsuario;
     var idPelicula = req.query.idPelicula;
     servicioPeliculas.obtenerValoracionPelicula(idUsuario, idPelicula).then(function (valoracion) {
@@ -49,7 +49,7 @@ router.get('/obtenerValoracionPelicula', function (req, res, next) {
     });
 })
 
-router.get('/obtenerMediaPelicula', function (req, res, next) {
+router.get('/valoraciones/medias', function (req, res, next) {
     var idPelicula = req.query.idPelicula;
 
     servicioPeliculas.obtenerMediaPelicula(idPelicula).then(function (media) {

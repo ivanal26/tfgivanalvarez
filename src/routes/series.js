@@ -3,7 +3,7 @@ const axios = require('axios');
 const router = express.Router();
 const servicioSeries = require('../servicios/servicioSeries');
 
-router.get('/mostrar', async function (req, res, next) {
+router.get('/vistas/series', async function (req, res, next) {
    if (!req.cookies.jwt) { //Si el usuario no dispone de token jwt (por lo que no esta logeado) no se le permite el acceso
       res.render('login/login');
    } else {
@@ -11,7 +11,7 @@ router.get('/mostrar', async function (req, res, next) {
    }
 })
 
-router.post('/agregarValoracionSerie', async function (req, res, next) {
+router.post('/valoraciones', async function (req, res, next) {
    var datos = {
        "idUsuario": req.body.idUsuario,
        "idSerie": req.body.idSerie,
@@ -28,7 +28,7 @@ router.post('/agregarValoracionSerie', async function (req, res, next) {
    res.send(result);
 })
 
-router.get('/obtenerValoracionSerie', function (req, res, next) {
+router.get('/valoraciones', function (req, res, next) {
    var idUsuario = req.query.idUsuario;
    var idSerie = req.query.idSerie;
    servicioSeries.obtenerValoracionSerie(idUsuario, idSerie).then(function (valoracion) {
@@ -39,7 +39,7 @@ router.get('/obtenerValoracionSerie', function (req, res, next) {
    });
 })
 
-router.get('/obtenerMediaSerie', function (req, res, next) {
+router.get('/valoraciones/medias', function (req, res, next) {
    var idSerie = req.query.idSerie;
    servicioSeries.obtenerMediaSerie(idSerie).then(function (media) {
        res.setHeader('Content-Type', 'application/json');
@@ -49,7 +49,7 @@ router.get('/obtenerMediaSerie', function (req, res, next) {
    });
 })
 
-router.put('/actualizarValoracionSerie', function (req, res, next) {
+router.put('/valoraciones', function (req, res, next) {
    var idUsuario = req.body.idUsuario;
    var idSerie = req.body.idSerie;
    var nuevaValoracion = req.body.valoracionEmitida;

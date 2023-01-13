@@ -84,7 +84,7 @@ function mostrarTarjetas(seriesAMostrar) {
 
 function seriePulsada(e) {
    let idSerie = e.currentTarget.firstElementChild.alt;
-   window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idSerie + "&type=tv";
+   window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idSerie + "&type=tv";
 }
 
 //Funcion que muestra los filtros incluidos en el array 'generosSeries' marcados en el desplegable de 'Filtrar'

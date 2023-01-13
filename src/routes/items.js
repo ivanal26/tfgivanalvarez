@@ -3,13 +3,13 @@ const axios = require('axios');
 const router = express.Router();
 const servicioItems = require('../servicios/servicioItems');
 
-router.get('/buscar', function (req, res, next) {
+router.get('/vistas/itemsBuscados', function (req, res, next) {
     res.render('items/itemsBuscados', {
         'queryBuscada': req.query.item
     });
 });
 
-router.get('/mostrar', function (req, res, next) {
+router.get('/vistas/itemSeleccionado', function (req, res, next) {
     if (!req.cookies.jwt) { //Si el usuario no dispone de token jwt (por lo que no esta logeado) no se le permite el acceso
         res.render('login/login');
     } else {
@@ -18,7 +18,7 @@ router.get('/mostrar', function (req, res, next) {
 });
 
 
-router.get('/obtenerListaValoraciones', function (req, res, next) {
+router.get('/calificaciones', function (req, res, next) {
     var idUser = req.query.idUser;
     servicioItems.obtenerListaValoraciones(idUser).then(function (itemsMap) {
         res.setHeader('Content-Type', 'application/json');
@@ -28,7 +28,7 @@ router.get('/obtenerListaValoraciones', function (req, res, next) {
     });
 })
 
-router.get('/obtenerEstadisticas', function (req, res, next) {
+router.get('/calificaciones/estadisticas', function (req, res, next) {
     var idUser = req.query.idUser;
     servicioItems.obtenerEstadisticas(idUser).then(function (itemsMap) {
         res.setHeader('Content-Type', 'application/json');
@@ -38,7 +38,7 @@ router.get('/obtenerEstadisticas', function (req, res, next) {
     })
 })
 
-router.post('/agregarAListaSeguimiento', function (req, res, next) {
+router.post('/listaSeguimiento', function (req, res, next) {
 
     var datos = {
         "idUsuario": req.body.idUsuario,
@@ -56,7 +56,7 @@ router.post('/agregarAListaSeguimiento', function (req, res, next) {
     })
 })
 
-router.delete('/eliminarDeListaSeguimiento', function (req, res, next) {
+router.delete('/listaSeguimiento', function (req, res, next) {
     var idUsuario = req.query.idUsuario;
     var idItem = req.query.idItem;
 
@@ -68,7 +68,7 @@ router.delete('/eliminarDeListaSeguimiento', function (req, res, next) {
     })
 })
 
-router.get('/obtenerItemDeListaSeg', function (req, res, next) {
+router.get('/listaSeguimiento', function (req, res, next) {
     var idItem = req.query.idItem;
     var idUsuario = req.query.idUsuario;
 
@@ -80,7 +80,7 @@ router.get('/obtenerItemDeListaSeg', function (req, res, next) {
     });
 })
 
-router.get('/obtenerTodosListaSeg', function (req, res, next) {
+router.get('/listaSeguimiento/all', function (req, res, next) {
     var idUsuario = req.query.idUsuario;
 
     servicioItems.obtenerTodosListaSeg(idUsuario).then(function (items) {
@@ -91,7 +91,7 @@ router.get('/obtenerTodosListaSeg', function (req, res, next) {
     })
 })
 
-router.get('/obtenerItemsMejorValorados', function (req, res, next) {
+router.get('/calificaciones/top', function (req, res, next) {
     var idUsuario = req.query.idUser;
     servicioItems.obtenerItemsMejorValorados(idUsuario).then(function (itemMap) {
         res.setHeader('Content-Type', 'application/json');

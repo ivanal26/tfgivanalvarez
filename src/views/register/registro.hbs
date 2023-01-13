@@ -7,7 +7,7 @@
             </div>
             <div class="col bg-white rounded-end col-der-register">
                 <h2 class="fw-bold text-center py-5">Crear cuenta</h2>
-                <form action="/usuarios/registrar" method="POST">
+                <form action="/usuarios" method="POST">
                     <div class="row">
                         <div class="col">
                             <input type="text" class="form-control inputBordeMorado" placeholder="Nombre" name="nombre">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="text-center my-2">
-                        <span>¿Ya tienes cuenta? <a href="/usuarios/login" id="entrarAhora">Entrar ahora</a></span>
+                        <span>¿Ya tienes cuenta? <a href="/usuarios/vistas/login" id="entrarAhora">Entrar ahora</a></span>
                     </div>
                 </form>
             </div>
@@ -60,5 +60,5 @@
     })
   </script>
   {{/if}}
-  <script src="../javascript/noFooter.js"></script>
+  <script src="../../javascript/noFooter.js"></script>
 </body>

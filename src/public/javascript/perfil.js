@@ -21,12 +21,12 @@ function cambiarAvatar(e) {
     $('#' + avatarSeleccionado).addClass('avatarSeleccionado');
 
     const avatarActual = document.querySelector('.imgAvatar');
-    avatarActual.setAttribute("src", "../images/" + avatarSeleccionado + ".png");
+    avatarActual.setAttribute("src", "../../images/" + avatarSeleccionado + ".png");
 
     const btnGuardarAvatar = document.querySelector(".btnGuardarAvatar");
     btnGuardarAvatar.addEventListener("click", function () {
         //Se actualiza el avatar de dicho usuario en la BD
-        fetch(URLBASE_POSTMOVIE+'usuarios/actualizarAvatar', {
+        fetch(URLBASE_POSTMOVIE+'usuarios/avatar', {
             method: 'PUT',
             body: JSON.stringify({
                 "avatar": avatarSeleccionado + ".png",
@@ -65,7 +65,7 @@ function cambiarAvatar(e) {
 }
 
 function obtenerUsuarioLogeado() {
-    fetch(URLBASE_POSTMOVIE+'usuarios/obtenerUsuario?idUser=' + tokenObtenido.id, {
+    fetch(URLBASE_POSTMOVIE+'usuarios?idUser=' + tokenObtenido.id, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -94,7 +94,7 @@ function obtenerUsuarioLogeado() {
 function cargarAvatarDeUsuario() {
     avatar = usuarioDeSesion.fotoAvatar; 
     const avatarActual = document.querySelector('.imgAvatar');
-    avatarActual.setAttribute("src", "../images/" + avatar);
+    avatarActual.setAttribute("src", "../../images/" + avatar);
 }
 
 function rellenarInfoUsuario() {
@@ -113,7 +113,7 @@ function rellenarInfoUsuario() {
 
 function rellenarEstadisticas() {
 
-    fetch(URLBASE_POSTMOVIE+'items/obtenerEstadisticas?idUser=' + usuarioDeSesion.id, {
+    fetch(URLBASE_POSTMOVIE+'items/calificaciones/estadisticas?idUser=' + usuarioDeSesion.id, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -207,7 +207,7 @@ function rellenarEstadisticas() {
 }
 
 function rellenarMejoresItemsValorados() {
-    fetch(URLBASE_POSTMOVIE+'items/obtenerItemsMejorValorados?idUser=' + usuarioDeSesion.id, {
+    fetch(URLBASE_POSTMOVIE+'items/calificaciones/top?idUser=' + usuarioDeSesion.id, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -233,7 +233,7 @@ function rellenarMejoresItemsValorados() {
                     </div>                
                     `
             containerMejorPeliculaValorada.addEventListener('click', () => {
-                window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + peliculaMejorValorada.idPelicula + "&type=movie";
+                window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + peliculaMejorValorada.idPelicula + "&type=movie";
             });
 
         } else {
@@ -247,7 +247,7 @@ function rellenarMejoresItemsValorados() {
             `
             const btnExplorarPeliculas = document.querySelector("#btnExplPeliculas");
             btnExplorarPeliculas.addEventListener("click", () => {
-                window.location.href = URLBASE_POSTMOVIE+"peliculas/mostrar";
+                window.location.href = URLBASE_POSTMOVIE+"peliculas/vistas/peliculas";
             })
         }
 
@@ -262,7 +262,7 @@ function rellenarMejoresItemsValorados() {
                     </div>                 
                     `
             containerMejorSerieValorada.addEventListener('click', () => {
-                window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + serieMejorValorada.idSerie + "&type=tv";
+                window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + serieMejorValorada.idSerie + "&type=tv";
             });
         } else {
             const containerMejorSerieValorada = document.querySelector("#containerImgMejorSerie");
@@ -276,7 +276,7 @@ function rellenarMejoresItemsValorados() {
 
             const btnExplorarSeries = document.querySelector("#btnExplSeries");
             btnExplorarSeries.addEventListener("click", () => {
-                window.location.href = URLBASE_POSTMOVIE+"series/mostrar";
+                window.location.href = URLBASE_POSTMOVIE+"series/vistas/series";
             })
         }
 
@@ -332,7 +332,7 @@ function mostrarListaValoraciones() {
     const containerListas = document.querySelector("#containerListas");
     containerListas.innerHTML = "";
 
-    fetch(URLBASE_POSTMOVIE+'items/obtenerListaValoraciones?idUser=' + usuarioDeSesion.id, {
+    fetch(URLBASE_POSTMOVIE+'items/calificaciones?idUser=' + usuarioDeSesion.id, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -430,7 +430,7 @@ function mostrarListaSeguimiento() {
     const containerListas = document.querySelector("#containerListas");
     containerListas.innerHTML = "";
 
-    fetch(URLBASE_POSTMOVIE+"items/obtenerTodosListaSeg?idUsuario=" + usuarioDeSesion.id, {
+    fetch(URLBASE_POSTMOVIE+"items/listaSeguimiento/all?idUsuario=" + usuarioDeSesion.id, {
         method: 'GET',
         redirect: 'follow',
         headers: new Headers({
@@ -514,7 +514,7 @@ function mostrarListaSeguimiento() {
 
 function eliminarDeListaSeg(e) {
     var idItemAQuitar = e.classList[2];
-    fetch(URLBASE_POSTMOVIE+"items/eliminarDeListaSeguimiento?idItem=" + idItemAQuitar + "&idUsuario=" + usuarioDeSesion.id, {
+    fetch(URLBASE_POSTMOVIE+"items/listaSeguimiento?idItem=" + idItemAQuitar + "&idUsuario=" + usuarioDeSesion.id, {
         method: 'DELETE',
         redirect: 'follow'
     }).then(function (response) {
@@ -543,7 +543,7 @@ function eliminarDeListaSeg(e) {
 
 //Funcion para mostrar item clicado de lista de seguimiento (se hace asi para que funcione correctamente el boton de borrar de lista de seguimiento)
 function mostrarItemDeListaSeg(e) {
-    window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + e.id + "&type=" + e.className;
+    window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + e.id + "&type=" + e.className;
 }
 
 //Funcion para mostrar item clicado de cualquier otro lugar de la pagina del perfil 
@@ -551,7 +551,7 @@ function mostrarItemConcreto(e) {
     var idItem = e.currentTarget.firstElementChild.id;
     var tipoItem = e.currentTarget.firstElementChild.className;
 
-    window.location.href = URLBASE_POSTMOVIE+"items/mostrar?idItem=" + idItem + "&type=" + tipoItem;
+    window.location.href = URLBASE_POSTMOVIE+"items/vistas/itemSeleccionado?idItem=" + idItem + "&type=" + tipoItem;
 }
 
 window.onload = function () {
